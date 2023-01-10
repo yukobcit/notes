@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+
+    <title>Notes</title>
+  </head>
+  <body>
+    <header><h1>Hello My Notes</h1></header>
+    <main>
+        <div>
+            <form action="/notes" method="POST">
+ 
+                <label for="title">Title:</label>
+                <input id="title" name="title" type="text">
+
+        
+                <label for="contents">Contents:</label>
+                <input id="contents" name="contents" type="text">
+              
+                <button type="submit" value="Submit">Submit</button>
+            </form>
+        </div>
+            
+        <div>
+            <ul>
+                <% for (let i = 0; i < notes.length; i++) { %>
+              <li>
+
+                <%- notes[i].title %><br>
+                <%- notes[i].contents %>
+
+                <form action="/notes/<%= notes[i].id%>/delete/" method="post">
+                    <a href="/notes/<%= notes[i].id%>/delete/"><button>Delete</button></a>
+                </form>
+
+              </li>
+              <%}%>
+
+            </ul>
+            </div>
+
+    </main>
+  </body>
+</html>
